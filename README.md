@@ -25,8 +25,6 @@ There are 6 supported commands:
 
 # Example
 
-To run the application you must supply a command file like so `ruby runner.rb commands/template.txt`
-
 In the example below, > represents each line of the command file
 
 
