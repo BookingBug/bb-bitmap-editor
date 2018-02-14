@@ -32,14 +32,20 @@ class BitmapEditor
     colour = split_command[3]
     point = OpenStruct.new(x: split_command[1].to_i, y: split_command[2].to_i)
 
-    image.add_colour(point, colour)
+    image.paint(point, colour)
   end
 
   def draw_vertical_colour_line(split_command)
-    x_column = split_command[1].to_i
-    y1_row = split_command[2].to_i
-    y2_row = split_command[3].to_i
+    x = split_command[1].to_i
+    y1 = split_command[2].to_i
+    y2 = split_command[3].to_i
     colour = split_command[4]
+
+    ys = [y1, y2]
+    from = ys.min
+    to = ys.max
+
+    line = (from..to).map { |y| OpenStruct.new(x: x, y: y) }
 
     image.draw_vertical_colour_line(line, colour)
   end
