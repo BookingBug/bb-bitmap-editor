@@ -50,7 +50,8 @@ describe BitmapEditor do
       describe "L 1 1 B" do
         let(:command) { "L 1 1 B" }
         it "colours the pixel at 1 1 black" do
-          expect(image).to receive(:add_colour).with(x: 1, y: 1, colour: "B")
+          point = OpenStruct.new(x: 1, y: 1)
+          expect(image).to receive(:add_colour).with(point, "B")
 
           run_command
         end
@@ -59,7 +60,8 @@ describe BitmapEditor do
       describe "L 2 9 R" do
         let(:command) { "L 2 9 R" }
         it "colours the pixel at 2 9 red" do
-          expect(image).to receive(:add_colour).with(x: 2, y: 9, colour: "R")
+          point = OpenStruct.new(x: 2, y: 9)
+          expect(image).to receive(:add_colour).with(point, "R")
 
           run_command
         end

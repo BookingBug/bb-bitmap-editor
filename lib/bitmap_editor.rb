@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class BitmapEditor
   attr_accessor :image
 
@@ -27,11 +29,10 @@ class BitmapEditor
   end
 
   def add_colour(split_command)
-    x = split_command[1].to_i
-    y = split_command[2].to_i
     colour = split_command[3]
+    point = OpenStruct.new(x: split_command[1].to_i, y: split_command[2].to_i)
 
-    image.add_colour({x: x, y: y, colour: colour})
+    image.add_colour(point, colour)
   end
 
   def draw_vertical_colour_line(split_command)
@@ -40,6 +41,6 @@ class BitmapEditor
     y2_row = split_command[3].to_i
     colour = split_command[4]
 
-    image.draw_vertical_colour_line({x: x_column, y1: y1_row, y2: y2_row, colour: colour})
+    image.draw_vertical_colour_line(line, colour)
   end
 end
